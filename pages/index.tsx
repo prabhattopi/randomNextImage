@@ -4,6 +4,7 @@ import { Button } from "../app/component/Button";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import "./globals.css";
+import { NextSeo } from "next-seo";
 
 export default function App() {
   const [imageUrl, setImageUrl] = useState("");
@@ -37,18 +38,31 @@ export default function App() {
     return (
       <>
    
-          <Head>
-            <title>Random Images</title>
-            <meta name="image" content={imageUrl} />
-            <meta name="image:width" content="100" />
-            <meta name="image:height" content="100" />
-            <meta name="description" content="Check out this random image!" />
-            <meta name="url" content={`${window.location.protocol}//${window.location.host}${router.pathname}`} />
-            <meta name="twitter:card" content="summary_large_image" />
-            <meta name="twitter:title" content="Random Images" />
-            <meta name="twitter:description" content="Check out this random image!" />
-            <meta name="twitter:image" content={imageUrl} />
-          </Head>
+   <NextSeo
+      title="Random Images"
+      description="Random Beautiful Images"
+      canonical="https://random-next-image.vercel.app"
+      openGraph={{
+        url: `${imageUrl}`,
+        title: 'Images',
+        description: 'Random images',
+        images: [
+          {
+            url: `${imageUrl}`,
+            width: 800,
+            height: 600,
+            alt: 'Og Image Alt',
+            type: 'image/jpeg',
+          }
+        ],
+        // siteName: 'SiteName',
+      }}
+      twitter={{
+        // handle: '@handle',
+        // site: '@site',
+        cardType: 'summary_large_image',
+      }}
+    />
 
         <div className="flex items-center justify-center min-h-screen bg-gray-100 ">
           <div className="bg-white rounded-lg shadow-md p-4 max-w-sm w-full sm:max-w-md sm:w-auto">
