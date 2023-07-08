@@ -51,7 +51,7 @@ export default function App() {
           />
           <meta property="og:image" content={imageUrl} />
           <meta name="twitter:card" content="summary_large_image" />
-          <meta property="og:url" content={imageUrl} />
+          <meta property="og:url" content={`${window.location.protocol}//${window.location.host}${router.pathname}`} />
           <meta property="og:image:width" content="400" />
           <meta property="og:image:height" content="300" />
         </Head>
