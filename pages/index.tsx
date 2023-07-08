@@ -1,16 +1,15 @@
-
 import { useEffect, useState } from "react";
-import "./globals.css"
 import { FiShare2 } from "react-icons/fi";
 import { Button } from "../app/component/Button";
 import { useRouter } from "next/router";
-
 import Head from "next/head";
+import "./globals.css";
 
 export default function App() {
   const [imageUrl, setImageUrl] = useState("");
   const [showModal, setShowModal] = useState(false);
-  const router=useRouter()
+  const router = useRouter();
+
   useEffect(() => {
     fetchRandomImage();
   }, []);
@@ -20,14 +19,12 @@ export default function App() {
       .then((response) => response.url)
       .then((url) => {
         setImageUrl(url);
-        
       })
       .catch((error) => {
         console.error("Error fetching random image:", error);
       });
   };
 
-  
   const handleShare = () => {
     setShowModal(true);
   };
@@ -37,24 +34,29 @@ export default function App() {
   };
 
   if (imageUrl) {
-
-
     return (
       <>
-        <Head>
-          <title>Random Images</title>
-          <meta name="description" content="Check out this random image!" />
-          <meta property="og:title" content="Random Images" />
-          <meta
-            property="og:description"
-            content="Check out this random image!"
-          />
-          <meta property="og:image" content={imageUrl} />
-          <meta name="twitter:card" content="summary_large_image" />
-          <meta property="og:url" content={`${window.location.protocol}//${window.location.host}${router.pathname}`} />
-          <meta property="og:image:width" content="400" />
-          <meta property="og:image:height" content="300" />
-        </Head>
+        {typeof window !== "undefined" && (
+          <Head>
+            <title>Random Images</title>
+            <meta name="description" content="Check out this random image!" />
+            <meta property="og:title" content="Random Images" />
+            <meta
+              property="og:description"
+              content="Check out this random image!"
+            />
+            <meta property="og:image" content={imageUrl} />
+            <meta property="og:image:width" content="400" />
+            <meta property="og:image:height" content="300" />
+            <meta name="twitter:card" content="summary_large_image" />
+            <meta name="twitter:title" content="Random Images" />
+            <meta
+              name="twitter:description"
+              content="Check out this random image!"
+            />
+            <meta name="twitter:image" content={imageUrl} />
+          </Head>
+        )}
         <div className="flex items-center justify-center min-h-screen bg-gray-100 ">
           <div className="bg-white rounded-lg shadow-md p-4 max-w-sm w-full sm:max-w-md sm:w-auto">
             <h1 className="text-2xl font-bold mb-4">Random Image Display</h1>
@@ -66,7 +68,12 @@ export default function App() {
               Share <FiShare2 className="inline-block ml-1" />
             </button>
           </div>
-          {showModal && <Button imageUrl={`${window.location.protocol}//${window.location.host}${router.pathname}`} closeModal={closeModal} />}
+          {showModal && (
+            <Button
+              imageUrl={`${window.location.protocol}//${window.location.host}${router.pathname}`}
+              closeModal={closeModal}
+            />
+          )}
         </div>
       </>
     );
