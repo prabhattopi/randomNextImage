@@ -75,7 +75,7 @@ export default function App() {
           </div>
           {showModal && (
             <Button
-              imageUrl={`${window.location.protocol}//${window.location.host}${router.pathname}`}
+              imageUrl={imageUrl}
               closeModal={closeModal}
             />
           )}
