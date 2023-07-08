@@ -37,32 +37,30 @@ export default function App() {
   if (imageUrl) {
     return (
       <>
-   
-   <NextSeo
-      title="Random Images"
-      description="Random Beautiful Images"
-      canonical="https://random-next-image.vercel.app"
-      openGraph={{
-        url: `${imageUrl}`,
-        title: 'Images',
-        description: 'Random images',
-        images: [
-          {
-            url: `${imageUrl}`,
-            width: 800,
-            height: 600,
-            alt: 'Og Image Alt',
-            type: 'image/jpeg',
-          }
-        ],
-        // siteName: 'SiteName',
-      }}
-      twitter={{
-        // handle: '@handle',
-        // site: '@site',
-        cardType: 'summary_large_image',
-      }}
-    />
+        <NextSeo
+          title="Random Images"
+          description="Random Beautiful Images"
+          canonical="https://random-next-image.vercel.app"
+          openGraph={{
+            url: `${window.location.protocol}//${window.location.host}${router.pathname}`,
+            title: "Random Images",
+            description: "Check out this random image!",
+            images: [
+              {
+                url: imageUrl,
+                width: 800,
+                height: 600,
+                alt: "Random Image",
+              },
+            ],
+            site_name: "Random Images",
+          }}
+          twitter={{
+            handle: "@Numerical Wallah",
+            site: "@site",
+            cardType: "summary_large_image",
+          }}
+        />
 
         <div className="flex items-center justify-center min-h-screen bg-gray-100 ">
           <div className="bg-white rounded-lg shadow-md p-4 max-w-sm w-full sm:max-w-md sm:w-auto">
