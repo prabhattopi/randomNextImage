@@ -39,16 +39,11 @@ export default function App() {
    
           <Head>
             <title>Random Images</title>
-            <meta property="og:type" content="article" />
-            <meta property="og:title" content="Random Images" />
-            <meta property="og:image" content={imageUrl} />
-            <meta property="og:image:width" content="100" />
-            <meta property="og:image:height" content="100" />
-            <meta property="og:description" content="Check out this random image!" />
-            <meta property="og:url" content={`${window.location.protocol}//${window.location.host}${router.pathname}`} />
-            <meta property="og:site_name" content="Your Site Name" />
-            <meta property="article:author" content="Author Name" />
-            <meta property="article:published_time" content="2023-07-08T12:00:00Z" />
+            <meta name="image" content={imageUrl} />
+            <meta name="image:width" content="100" />
+            <meta name="image:height" content="100" />
+            <meta name="description" content="Check out this random image!" />
+            <meta name="url" content={`${window.location.protocol}//${window.location.host}${router.pathname}`} />
             <meta name="twitter:card" content="summary_large_image" />
             <meta name="twitter:title" content="Random Images" />
             <meta name="twitter:description" content="Check out this random image!" />
