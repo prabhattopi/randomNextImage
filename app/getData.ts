@@ -12,7 +12,7 @@ async function getCookies(){
  
 }
 export async function getData() {
-    const res = await fetch('https://picsum.photos/500/300');
+    const res = await fetch('https://picsum.photos/500/300',{ cache: 'no-store' });
     const data = res
     const afterId = data.url.substring(data.url.indexOf("id/") + 3, data.url.indexOf(".jpg"));
     await setCookies(afterId)
