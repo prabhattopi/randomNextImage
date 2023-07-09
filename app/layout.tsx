@@ -3,7 +3,6 @@ import { AppContextProvider } from "./Appcontext";
 import "./globals.css";
 
 export const metadata = {
-  metadataBase: new URL("https://random-next-image-k1zfx308t-prabhattopi.vercel.app/"),
   title: {
     default: "Random Image",
     template: `%s | Explorer`,
