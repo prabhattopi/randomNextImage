@@ -9,7 +9,7 @@ export const size = {
 export const alt = "Expolorer | Blog";
 export const contentType = "image/png";
 
-export default async function og({ params }: { params: { slug: string } }) {
+export default async function og() {
  const data=await getData()
 
   return new ImageResponse(
