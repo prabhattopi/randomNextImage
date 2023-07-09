@@ -1,26 +1,26 @@
 import { ImageResponse } from 'next/server'
 import { useContext } from 'react'
 import { AppContext } from './Appcontext'
-import { getData } from './getData'
- 
+import Image  from "next/image"
+import Link from "next/link"
+
 // Route segment config
 export const runtime = 'edge'
- 
+
 // Image metadata
 export const alt = 'About Acme'
 export const size = {
   width: 1200,
   height: 630,
 }
- 
+
 export const contentType = 'image/png'
- 
+
 // Font
 
- 
 // Image generation
-export default async function Image() {
-    const {imageUrl}=useContext(AppContext)
+export default function CustomImage() {
+  const { imageUrl } = useContext(AppContext)
   return new ImageResponse(
     (
       // ImageResponse JSX element
@@ -33,13 +33,15 @@ export default async function Image() {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          flexDirection:"column",
-          gap:"20px"
+          flexDirection: "column",
+          gap: "20px"
         }}
       >
-          <img src={imageUrl} alt="random Image"/>
-          <a target="_blank" href={imageUrl}></a>
-       Random Image
+        <Image  width={300}
+      height={200} src={imageUrl} alt="random Image" />
+        <Link href={imageUrl} passHref>
+          <a target="_blank">Random Image</a>
+        </Link>
       </div>
     ),
     // ImageResponse options
@@ -47,7 +49,6 @@ export default async function Image() {
       // For convenience, we can re-use the exported opengraph-image
       // size config to also set the ImageResponse's width and height.
       ...size,
-    
     }
   )
 }
