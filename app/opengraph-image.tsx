@@ -1,8 +1,9 @@
 import { ImageResponse } from 'next/server'
-import { useContext } from 'react'
-import { AppContext } from './Appcontext'
+
 import Image  from "next/image"
 import Link from "next/link"
+import { cookies } from 'next/headers'
+import { getSingleData } from './getData'
 
 // Route segment config
 export const runtime = 'edge'
@@ -19,8 +20,11 @@ export const contentType = 'image/png'
 // Font
 
 // Image generation
-export default function CustomImage() {
-  const { imageUrl } = useContext(AppContext)
+export default async function CustomImage() {
+    const cookieStore = cookies()
+  // @ts-ignore: Unreachable code error
+    const id:string=cookieStore.get('idimage')
+    const data= await getSingleData(id);
   return new ImageResponse(
     (
       // ImageResponse JSX element
@@ -38,8 +42,8 @@ export default function CustomImage() {
         }}
       >
         <Image  width={300}
-      height={200} src={imageUrl} alt="random Image" />
-        <Link href={imageUrl} passHref>
+      height={200} src={data.url} alt="random Image" />
+        <Link href={data.url} passHref>
           <a target="_blank">Random Image</a>
         </Link>
       </div>

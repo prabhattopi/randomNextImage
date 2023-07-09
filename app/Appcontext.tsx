@@ -29,6 +29,7 @@ export const AppContextProvider = ({ children }: { children: ReactNode }) => {
   const router=useRouter()
   const handleShare = () => {
     setShowModal(true);
+
    
   };
 
