@@ -37,8 +37,9 @@ export default async function Image() {
           gap:"20px"
         }}
       >
-          <img src={imageUrl} alt=""/>
-        About Acme
+          <img src={imageUrl} alt="random Image"/>
+          <a target="_blank" href={imageUrl}></a>
+       Random Image
       </div>
     ),
     // ImageResponse options
