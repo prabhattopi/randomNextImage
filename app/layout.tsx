@@ -8,10 +8,7 @@ export const metadata = {
     default: "Random Image",
     template: `%s | Explorer`,
   },
-  description: "Explore the latest posts from my travel blog.",
-  verification: {
-    google: "google-site-verification=123123123",
-  },
+  description: "Randomly Image with data",
 };
 
 export default function RootLayout({
