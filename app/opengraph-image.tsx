@@ -1,4 +1,6 @@
 import { ImageResponse } from 'next/server'
+import { useContext } from 'react'
+import { AppContext } from './Appcontext'
 import { getData } from './getData'
  
 // Route segment config
@@ -18,7 +20,7 @@ export const contentType = 'image/png'
  
 // Image generation
 export default async function Image() {
-    const data=await getData()
+    const {imageUrl}=useContext(AppContext)
   return new ImageResponse(
     (
       // ImageResponse JSX element
@@ -35,7 +37,7 @@ export default async function Image() {
           gap:"20px"
         }}
       >
-          <img src={data.url} alt=""/>
+          <img src={imageUrl} alt=""/>
         About Acme
       </div>
     ),
