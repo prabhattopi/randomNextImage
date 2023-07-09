@@ -1,15 +1,15 @@
+
 import { ImageResponse } from 'next/server'
 
 import Image  from "next/image"
 import Link from "next/link"
-import { cookies } from 'next/headers'
+
 import { getSingleData } from './getData'
 
 // Route segment config
 export const runtime = 'edge'
 
 // Image metadata
-export const alt = 'About Acme'
 export const size = {
   width: 1200,
   height: 630,
@@ -21,10 +21,9 @@ export const contentType = 'image/png'
 
 // Image generation
 export default async function CustomImage() {
-    const cookieStore = cookies()
-  // @ts-ignore: Unreachable code error
-    const id:string=cookieStore.get('idimage')
-    const data= await getSingleData(id);
+ 
+
+ const data= await getSingleData();
   return new ImageResponse(
     (
       // ImageResponse JSX element

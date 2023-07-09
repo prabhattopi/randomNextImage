@@ -1,26 +1,30 @@
-import { cookies } from 'next/headers'
 
+import Cookies from 'universal-cookie';
+
+const cookies = new Cookies();
+async function setCookies(afterId:string){
+    cookies.set('idimage', afterId)
+ 
+}
+async function getCookies(){
+    let id=cookies.get('idimage')
+    return id
+ 
+}
 export async function getData() {
-    const res = await fetch('https://picsum.photos/500/300', { cache: 'no-store' });
+    const res = await fetch('https://picsum.photos/500/300');
     const data = res
-  
-    // if (typeof window !== 'undefined') {
-    //   localStorage.setItem('id', data.url);
-    // }
     const afterId = data.url.substring(data.url.indexOf("id/") + 3, data.url.indexOf(".jpg"));
-    cookies().set('idimage', afterId)
+    await setCookies(afterId)
     return data;
   }
 
-  export async function getSingleData(id:string) {
+  export async function getSingleData() {
+ 
+
+    const id=await getCookies()
     const res = await fetch('https://picsum.photos/id/'+id, { cache: 'no-store' });
     const data = res
-  
-    // if (typeof window !== 'undefined') {
-    //   localStorage.setItem('id', data.url);
-    // }
-    // const afterId = data.url.substring(data.url.indexOf("id/") + 3, data.url.indexOf(".jpg"));
-    // cookies().set('idimage', afterId)
     return data;
   }
   
