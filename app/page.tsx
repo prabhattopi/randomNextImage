@@ -6,7 +6,7 @@ import {Button} from "./component/Button"
 export default async function App({ req, res }: NextPageContext) {
    
 
- await fetch("https://port-3000-nodejs-brown-mouse-webdevelopertheworldofweb112160.codeanyapp.com/api/image")
+//  await fetch("https://port-3000-nodejs-brown-mouse-webdevelopertheworldofweb112160.codeanyapp.com/api/image")
 //   let resp=JSON.stringify(data1)
 //   console.log(resp)
 
