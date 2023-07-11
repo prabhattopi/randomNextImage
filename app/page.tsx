@@ -1,9 +1,9 @@
-import Cookies from 'cookies';
-import { NextPageContext } from 'next';
+
 import { HandleButton } from './component/HandleButton';
-import { getData, getSingleData } from './getData';
+import { getSingleData } from './getData';
 import {Button} from "./component/Button"
-export default async function App({ req, res }: NextPageContext) {
+//@ts-ignore
+export default async function App({ req, res }) {
    
 
 //  await fetch("https://port-3000-nodejs-brown-mouse-webdevelopertheworldofweb112160.codeanyapp.com/api/image")
