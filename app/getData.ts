@@ -1,6 +1,6 @@
 
 // import Cookies from 'js-cookie';
-// import { cookies } from 'next/headers';
+import { cookies } from 'next/headers';
 // async function setCookies(afterId:string){
 //     Cookies.set('idimage', afterId)
  
